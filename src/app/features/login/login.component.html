@@ -1,1 +1,59 @@
-<p>login works!</p>
+<main>
+    <div class="container">
+        <div class="logo">
+        <img src="logo_vertical.svg" alt="Logo Hydra">
+        </div>
+        <form (submit)="onLogin($event)" class="login-form">
+        <div class="input-group">
+            <span class="icon">👤</span>
+            <input type="text" placeholder="Identificação" [(ngModel)]="identificacao" name="identificacao" required>
+        </div>
+        <div class="input-group">
+            <span class="icon">🔒</span>
+            <input 
+            [type]="passwordVisible ? 'text' : 'password'" 
+            placeholder="Senha" 
+            [(ngModel)]="senha" 
+            name="senha" 
+            required>
+            <span class="icon toggle-password" (click)="togglePasswordVisibility()">👁️</span>
+        </div>
+        <button type="submit" class="login-button">ENTRAR</button>
+        </form>
+    </div>
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<main>
+    <section class="form-section">
+        <form [formGroup]="loginForm">
+            <mat-form-field>
+                <mat-label>Identificação</mat-label>
+                <input matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput>
+            </mat-form-field>
+        </form>
+        <button>ENTRAR</button>
+    </section>
+</main>-->
