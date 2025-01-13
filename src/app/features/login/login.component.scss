@@ -1,24 +1,24 @@
-main{
-    // Estilos globais
-    margin: 0;
-    padding: 0;
-    font-family: Open Sans;
-    background-color: #083D3D;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+main {
+  // Estilos globais
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #083D3D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 
   // Container principal
   .container {
     text-align: center;
     width: 100%;
     max-width: 400px;
-    padding: 20px;
+    padding: 40px;
 
     .logo {
       img {
-        width: 100px;
+        width: 150px;
         margin-bottom: 20px;
       }
     }
@@ -33,18 +33,27 @@ main{
         display: flex;
         align-items: center;
         background-color: #3F4948;
-        border-radius: 8px;
+        border-radius: 10px;
         padding: 10px;
 
+        input {
+          font-size: 16px;
+          font-family: 'Roboto', sans-serif;
+          color: white;
+          flex-grow: 1;
+          background: none;
+          border: none;
+          outline: none;
+        }
+
         input::placeholder {
-            color: #00FBFB; // Cor inicial do placeholder
-            opacity: 1;
-          }
+          color: #00FBFB;
+          opacity: 1;
+        }
 
-          input:focus::placeholder {
-            color: #457b9d; // Cor quando o campo está em foco
-          }
-
+        input:focus::placeholder {
+          color: #457b9d;
+        }
 
         .icon {
           margin-right: 10px;
@@ -52,33 +61,31 @@ main{
           font-size: 18px;
         }
 
-        input {
-          background: none;
-          border: none;
-          outline: none;
-          color: white;
-          font-size: 16px;
-          flex-grow: 1;
-          font-family: 'Roboto', sans-serif;
-        }
-
         .toggle-password {
-          cursor: pointer;
           font-size: 18px;
+          cursor: pointer;
         }
       }
+    }
 
-      .login-button {
-        background-color: #00FBFB;
-        border: none;
-        color: #083D3D;
-        padding: 12px;
-        border-radius: 8px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s;
+    .login-button {
+      padding: 12px 0px;
+      margin: 10px 65px;
+      border: none;
+      border-radius: 25px;
+      background-color: #00FBFB;
+      box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3);
+      font-size: 17px;
+      font-weight: bold;
+      color: #083D3D;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #083D3D; /* Muda a cor do texto */
+        color: #00FBFB; /* Muda a cor do botão */
       }
     }
   }
 }
-
