@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      identificacao: new FormControl('', Validators.required),
+      username: new FormControl('', Validators.required),
       senha: new FormControl('', Validators.required)
     });
     
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
 
   // Envio do formulário
   onLogin(){
-    this.loginService.login(this.loginForm.value.identificacao, this.loginForm.value.senha).subscribe({
+    this.loginService.login(this.loginForm.value.username, this.loginForm.value.senha).subscribe({
       next: () => this.toastService.success("Login feito com sucesso!"),
       error: () => this.toastService.error("Ocorreu um erro! Tente novamente")
     })

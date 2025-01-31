@@ -6,10 +6,10 @@
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form"> 
       <div class="input-group">
         <span class="icon"><mat-icon>person</mat-icon></span>
-        <input 
+        <input
           type="text" 
-          placeholder="Identificação" 
-          formControlName="identificacao" 
+          placeholder="Username" 
+          formControlName="username" 
           required>
       </div>
       <div class="input-group">
