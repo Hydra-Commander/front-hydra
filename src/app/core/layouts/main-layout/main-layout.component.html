@@ -1,2 +1,9 @@
-LAYOUT - TESTE
-<router-outlet></router-outlet>
+<div class="layout-container">
+  <app-left-sidebar
+  [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()"
+  (changeIsLeftSidebarCollapsed)="changeIsLeftSidebarCollapsed($event)"
+/>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>
