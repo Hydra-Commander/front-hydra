@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@use 'ngx-toastr/toastr';
 
 *{
   margin: 0;
@@ -10,4 +10,9 @@
   --primary-color: #004F4F;
   --secondary-color: #083D3D;
   --terciary-color: #3F4948;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', "Helvetica Neue", sans-serif; }
+input {
+  font-family: 'Roboto', sans-serif;
 }

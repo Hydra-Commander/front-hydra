@@ -1,1 +1,35 @@
-<p>login works!</p>
+<main>
+  <div class="container">
+    <div class="logo">
+      <img src="logo_vertical.svg" alt="Logo Hydra">
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form"> 
+      <div class="input-group">
+        <span class="icon"><mat-icon>person</mat-icon></span>
+        <input
+          type="text" 
+          placeholder="Username" 
+          formControlName="username" 
+          required>
+      </div>
+      <div class="input-group">
+        <span class="icon"><mat-icon>lock</mat-icon></span>
+        <input 
+          [type]="passwordVisible ? 'text' : 'password'" 
+          placeholder="Senha" 
+          formControlName="senha" 
+          required>
+        <span class="icon toggle-password" (click)="togglePasswordVisibility()">
+          <mat-icon>{{ passwordVisible ? 'visibility' : 'visibility_off' }}</mat-icon>
+        </span>
+      </div>
+      <button
+        type="submit"
+        class="login-button"
+        [disabled]="!loginForm.valid"
+        >
+        ENTRAR
+      </button>
+    </form>
+  </div>
+</main>
