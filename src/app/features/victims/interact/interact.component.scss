@@ -18,6 +18,82 @@
     main {
       width: calc(60% - 25px);
       background-color: var(--gray-100);
+      h3 {
+        color: var(--white);
+        font-size: 1rem;
+        font-weight: 500;
+      }
+
+      .command {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+        .choose-command {
+          display: flex;
+          justify-content: space-between;
+          gap: 10px;
+          label {
+            cursor: pointer;
+            color: var(--cyan-100);
+            font-weight: 600;
+          }
+        }
+
+        .form-command {
+          input[type="text"] {
+            font-size: 1.2rem;
+            color: var(--white);
+            width: 100%;
+            background-color: transparent;
+            border: 2px solid var(--terciary-color);
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 6px;
+            font-family: 'Roboto', serif;
+            outline: none;
+          }
+
+          select {
+            outline: none;
+            color: var(--white);
+            cursor: pointer;
+            font-family: 'Roboto', serif;
+            font-size: 1.1rem;
+            width: 100%;
+            background-color: var(--terciary-color);
+            border: none;
+            padding: 10px;
+            margin-top: 5px;
+          }
+
+        }
+
+        .btn-send {
+          margin-top: 10px;
+          align-self: end;
+          text-transform: uppercase;
+          font-weight: 600;
+          border-radius: 25px;
+          border: none;
+          padding: 5px 18px;
+          font-size: 1rem;
+          color: var(--primary-color);
+          background-color: var(--cyan-100);
+        }
+      }
+
+      .result {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        div{
+          background-color: var(--terciary-color);
+          height: 315px;
+          border-radius: 6px;
+        }
+      }
+
     }
 
     aside {
