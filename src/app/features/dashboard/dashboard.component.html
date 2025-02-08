@@ -1,33 +1,13 @@
 <div class="container">
   <header> <h1>DASHBOARD</h1> </header>
   <div class="content">
-    <div class="card-content">
-      <span class="title">TOTAL USERS</span>
-      <div>
-        <span class="counter">5</span>
-        <mat-icon>groups</mat-icon>
-      </div>
-    </div>
-    <div class="card-content">
-      <span class="title">TOTAL USERS</span>
-      <div>
-        <span class="counter">5</span>
-        <mat-icon >groups</mat-icon>
-      </div>
-    </div>
-    <div class="card-content">
-      <span class="title">TOTAL USERS</span>
-      <div>
-        <span class="counter">5</span>
-        <mat-icon>groups</mat-icon>
-      </div>
-    </div>
-    <div class="card-content">
-      <span class="title">TOTAL USERS</span>
-      <div>
-        <span class="counter">5</span>
-        <mat-icon>groups</mat-icon>
-      </div>
-    </div>
+    @for (content of contents; track content.title) {
+      <app-card-icon
+        [title]="content.title"
+        [counter]="content.counter"
+        [iconName]="content.iconName"
+      >
+      </app-card-icon>
+    }
   </div>
 </div>
