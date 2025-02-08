@@ -3,19 +3,30 @@
   <div class="content">
     <main>
       <h2>NXeqCXSdpkj</h2>
-      <div>
-        <input type="checkbox" name="isCustom" id="isCustom" (change)="toggleCustom()">
-        <label for="isCustom">Is Custom?</label>
-      </div>
-      @if (isCustom) {
-        <input type="text" placeholder="Digite algo">
-
-      } @else {
-        <select>
-          <option value="1">Opção 1</option>
-          <option value="2">Opção 2</option>
-        </select>
-      }
+      <section class="command">
+        <div class="choose-command">
+          <h3>Command: </h3>
+          <label for="isCustom">
+            <input type="checkbox" name="isCustom" id="isCustom" (change)="toggleCustom()">
+            {{ 'Custom Command?' | uppercase }}
+          </label>
+        </div>
+        <div class="form-command">
+          @if (isCustom) {
+            <input type="text" placeholder="">
+          } @else {
+            <select>
+              <option value="1">Screenshot</option>
+              <option value="2">Get IpAddress</option>
+            </select>
+          }
+        </div>
+        <button class="btn-send">Send</button>
+      </section>
+      <section class="result">
+        <h3>Output: </h3>
+        <div></div>
+      </section>
     </main>
     <aside>
       <h2>Session Details</h2>
