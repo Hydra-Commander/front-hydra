@@ -1,0 +1,33 @@
+.card-container {
+  background-color: var(--gray-100);
+  padding: 15px;
+  border-radius: 6px;
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  div {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    .counter {
+      margin-top: 8px;
+      font-size: 1.6rem;
+      color: var(--cyan-100);
+      font-family: 'Roboto Slab', serif;
+      font-weight: 600;
+    }
+
+    mat-icon {
+      font-size: 5rem;
+      width: 5rem;
+      height: 100%;
+      margin-top: -15px;
+      margin-right: 10px;
+    }
+
+  }
+
+}
