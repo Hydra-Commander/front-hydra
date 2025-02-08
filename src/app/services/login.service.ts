@@ -6,9 +6,9 @@ import { LoginResponse } from '../shared/types/login-response.type';
   providedIn: 'root'
 })
 export class LoginService {
-  apiUrl: string = "http://localhost:8080/auth/login"
+  apiUrl: string = "/api/auth/login"
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private readonly httpClient: HttpClient) { }
 
   login(username: string, password: string){
     return this.httpClient.post<LoginResponse>(this.apiUrl, {username, password });
