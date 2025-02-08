@@ -1,1 +1,38 @@
-<p>server-logs works!</p>
+<div class="wrapper">
+  <div class="header">
+    <h1>SERVER LOGS</h1>
+    <div class="search-bar">
+      <mat-icon>search</mat-icon>
+      <input type="text" placeholder="Search" [(ngModel)]="searchQuery" (input)="filterServerLogs()" />
+    </div>
+  </div>
+
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Agent ID</th>
+          <th>Date</th>
+          <th>Severity</th>
+          <th>Log</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let serverLog of filteredServerLogs; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ serverLog.agentId }}</td>
+          <td>{{ serverLog.date }}</td>
+          <td>{{ serverLog.severity }}</td>
+          <td>{{ serverLog.log }}</td>
+          <td>
+            <button mat-icon-button class="delete-button" (click)="deleteServerLogs(serverLog.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
