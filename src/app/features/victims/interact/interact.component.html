@@ -1,1 +1,37 @@
-<p>interact works!</p>
+<div class="container">
+  <header> <h1>INTERACT</h1> </header>
+  <div class="content">
+    <main>
+      <h2>NXeqCXSdpkj</h2>
+      <div>
+        <input type="checkbox" name="isCustom" id="isCustom" (change)="toggleCustom()">
+        <label for="isCustom">Is Custom?</label>
+      </div>
+      @if (isCustom) {
+        <input type="text" placeholder="Digite algo">
+
+      } @else {
+        <select>
+          <option value="1">Opção 1</option>
+          <option value="2">Opção 2</option>
+        </select>
+      }
+    </main>
+    <aside>
+      <h2>Session Details</h2>
+      <section class="details">
+        <span><strong>Username:</strong> Enderson</span>
+        <span><strong>Hostname:</strong> endersonPC</span>
+        <span><strong>Ip Address:</strong> 192.168.0.0</span>
+        <span><strong>Process Id:</strong> 45201</span>
+        <span><strong>Is Admin:</strong> Yes</span>
+      </section>
+      <section class="latest-screenshot">
+        <h3>Latest Screenshot</h3>
+        <div>
+          <mat-icon>camera</mat-icon>
+        </div>
+      </section>
+    </aside>
+  </div>
+</div>

@@ -34,6 +34,10 @@ export const routes: Routes = [
       {
         path: 'victims/interact/:id',
         component: InteractComponent,
+      },
+      {
+        path: 'victims/interact',
+        component: InteractComponent,
       }
     ]
   },
