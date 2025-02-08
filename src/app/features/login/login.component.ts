@@ -3,6 +3,9 @@ import { ReactiveFormsModule, FormGroup, Validators, FormControl } from '@angula
 import { MatIconModule } from '@angular/material/icon';
 import { LoginService } from '../../services/login.service';
 import { ToastrService } from 'ngx-toastr';
+import { SessionService } from '../../shared/services/session.service';
+import { LoginResponse } from '../../shared/types/login-response.type';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -21,14 +24,19 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   passwordVisible: boolean = false;
 
-  constructor(private loginService: LoginService, private toastService: ToastrService) {}
+  constructor(
+    private loginService: LoginService,
+    private toastService: ToastrService,
+    private sessionService: SessionService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       username: new FormControl('', Validators.required),
       senha: new FormControl('', Validators.required)
     });
-    
+
   }
 
   // Alterna a visibilidade da senha
@@ -39,7 +47,10 @@ export class LoginComponent implements OnInit {
   // Envio do formulário
   onLogin(){
     this.loginService.login(this.loginForm.value.username, this.loginForm.value.senha).subscribe({
-      next: () => this.toastService.success("Login feito com sucesso!"),
+      next: (response: LoginResponse) => {
+        this.sessionService.saveSession(response);
+        this.router.navigate(["/dashboard"]);
+      },
       error: () => this.toastService.error("Ocorreu um erro! Tente novamente")
     })
   }
