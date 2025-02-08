@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [],
+  imports: [MatIcon],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
