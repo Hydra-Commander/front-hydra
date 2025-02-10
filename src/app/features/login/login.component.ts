@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
         this.sessionService.saveSession(response);
         this.router.navigate(["/dashboard"]);
       },
-      error: () => this.toastService.error("Ocorreu um erro! Tente novamente")
+      error: () => this.toastService.error("Error! Please, try again!")
     })
   }
 }
