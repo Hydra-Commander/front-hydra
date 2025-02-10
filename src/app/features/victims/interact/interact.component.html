@@ -2,7 +2,7 @@
   <header> <h1>INTERACT</h1> </header>
   <div class="content">
     <main>
-      <h2>NXeqCXSdpkj</h2>
+      <h2>{{ victim.agentId }}</h2>
       <section class="command">
         <div class="choose-command">
           <h3>Command: </h3>
@@ -31,11 +31,9 @@
     <aside>
       <h2>Session Details</h2>
       <section class="details">
-        <span><strong>Username:</strong> Enderson</span>
-        <span><strong>Hostname:</strong> endersonPC</span>
-        <span><strong>Ip Address:</strong> 192.168.0.0</span>
-        <span><strong>Process Id:</strong> 45201</span>
-        <span><strong>Is Admin:</strong> Yes</span>
+        <span><strong>Hostname:</strong> {{ victim.hostname }}</span>
+        <span><strong>Ip Address:</strong> {{ victim.ipAddress }}</span>
+        <span><strong>Last Active: </strong> {{ victim.lastActive }} </span>
       </section>
       <section class="latest-screenshot">
         <h3>Latest Screenshot</h3>
