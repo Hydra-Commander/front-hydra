@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { LoginService } from '../../services/login.service';
 import { ToastrService } from 'ngx-toastr';
 import { SessionService } from '../../shared/services/session.service';
 import { LoginResponse } from '../../shared/types/login-response.type';
 import { Router } from '@angular/router';
+import { LoginService } from '../../shared/services/login.service';
 
 @Component({
   selector: 'app-login',
