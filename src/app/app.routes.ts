@@ -32,7 +32,7 @@ export const routes: Routes = [
         component: ListComponent,
       },
       {
-        path: 'victims/interact/:id',
+        path: 'victims/interact/:victimId',
         component: InteractComponent,
       },
       {

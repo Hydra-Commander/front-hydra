@@ -3,10 +3,10 @@
       <h1>VICTIMS</h1>
       <div class="search-bar">
         <mat-icon>search</mat-icon>
-        <input type="text" placeholder="Search" [(ngModel)]="searchQuery" (input)="filterVictims()" />
+        <input type="text" placeholder="Search" [(ngModel)]="searchQuery" (ngModelChange)="onSearchChange()" />
       </div>
     </div>
-  
+
     <div class="container">
       <table>
         <thead>
@@ -20,23 +20,24 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let victim of filteredVictims; let i = index">
-            <td>{{ i + 1 }}</td>
-            <td>{{ victim.agentId }}</td>
-            <td>{{ victim.hostname }}</td>
-            <td>{{ victim.ipAdress }}</td>
-            <td>{{ victim.lastActive }}</td>
-            <td class="actions">
-              <button mat-icon-button class="delete-button" (click)="deleteVictim(victim.id)">
-                <mat-icon>delete</mat-icon>
-              </button>
-              <button mat-icon-button class="details-button" (click)="goToDetails(victim.id)">
-                <mat-icon>assignment_ind</mat-icon>
-              </button>
-            </td>            
-          </tr>
+          @for (victim of filteredVictims$ | async; track victim.id) {
+            <tr>
+              <td>{{ victim.id }}</td>
+              <td>{{ victim.agentId }}</td>
+              <td>{{ victim.hostname }}</td>
+              <td>{{ victim.ipAddress }}</td>
+              <td>{{ victim.lastActive }}</td>
+              <td class="actions">
+                <button mat-icon-button class="delete-button" (click)="deleteVictim(victim.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                <button mat-icon-button class="details-button" (click)="goToDetails(victim.id)">
+                  <mat-icon>assignment_ind</mat-icon>
+                </button>
+              </td>
+            </tr>
+          }
         </tbody>
       </table>
     </div>
   </div>
-  

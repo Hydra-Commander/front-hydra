@@ -1,17 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-
-interface Victim {
-  id: string;
-  agentId: string;
-  hostname: string;
-  ipAdress: string;
-  lastActive: string;
-}
+import { ApiService } from '../../../shared/services/api.service';
+import { BehaviorSubject, map, Observable } from 'rxjs';
+import { Victim } from '../../../shared/types/victims.interface';
 
 @Component({
   selector: 'app-list',
@@ -21,55 +15,61 @@ interface Victim {
   imports: [CommonModule, FormsModule, MatIconModule]
 })
 export class ListComponent implements OnInit {
-  victims: Victim[] = [];
-  filteredVictims: Victim[] = [];
-  searchQuery: string = '';
-
-  constructor(private http: HttpClient, private router: Router) {}
+  private readonly victimsSubject = new BehaviorSubject<Victim[]>([]);
+  victims$: Observable<Victim[]> = this.victimsSubject.asObservable();
+  filteredVictims$: Observable<Victim[]> = this.victims$;
+  searchQuery: string = "";
+  constructor(
+    private readonly apiService: ApiService,
+    private readonly router: Router
+  ){}
 
   ngOnInit(): void {
     this.fetchVictims();
-  }
-
-  fetchVictims(): void {
-    const apiUrl = 'https://67a6b48a510789ef0dfbfd77.mockapi.io/agentes';
-    this.http.get<Victim[]>(apiUrl).subscribe(
-      (data) => {
-        this.victims = data;
-        this.filteredVictims = data;
-      },
-      (error) => {
-        console.error('Erro ao buscar dados da API', error);
-      }
+    this.filteredVictims$ = this.victims$.pipe(
+      map(victims => this.filterVictims(victims))
     );
   }
 
-  filterVictims(): void {
+  fetchVictims(){
+    this.apiService.getAllAgents().subscribe({
+      next: (data) => {
+        this.victimsSubject.next(data);
+      },
+      error: (err) =>{
+        console.log(err)
+      }
+    })
+  }
+
+  filterVictims(victims: Victim[]): Victim[] {
     const query = this.searchQuery.toLowerCase();
-    this.filteredVictims = this.victims.filter(victim =>
+    return victims.filter(victim =>
       victim.agentId.toLowerCase().includes(query) ||
       victim.hostname.toLowerCase().includes(query) ||
-      victim.ipAdress.toLowerCase().includes(query) ||
+      victim.ipAddress.toLowerCase().includes(query) ||
       victim.lastActive.toLowerCase().includes(query)
     );
   }
 
-  deleteVictim(victimId: string): void {
-    console.log('Excluindo vítima com id:', victimId);
-  
-    const apiUrl = `https://67a6b48a510789ef0dfbfd77.mockapi.io/agentes/${victimId}`;
-    this.http.delete(apiUrl).subscribe(
-      () => {
-        this.fetchVictims();
-      },
-      (error) => {
-        console.error('Erro ao excluir vítima:', error);
-      }
+  onSearchChange(): void {
+    this.filteredVictims$ = this.victims$.pipe(
+      map(victims => this.filterVictims(victims))
     );
   }
 
-  goToDetails(victimId: string) {
-    this.router.navigate(['/interact', victimId]);
+  deleteVictim(victimId: number) {
+    this.apiService.deleteAgent(victimId).subscribe({
+      next: () => {
+        this.fetchVictims();
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
   }
-  
+
+  goToDetails(victimId: number): void {
+    this.router.navigate(['/victims/interact', victimId]);
+  }
 }
