@@ -1,13 +1,23 @@
 .container {
+  color: white;
   .content {
+    margin-top: 25px;
     display: flex;
     width: 100%;
-    gap: 25px;
+    gap: 30px;
     flex-wrap: wrap;
+
+    @media (max-width: 920px) {
+      flex-direction: column;
+    }
 
     main, aside {
       border-radius: 8px;
       padding: 20px;
+
+      @media (max-width: 920px) {
+        width: 100% !important;
+      }
 
       h2 {
         color: var(--cyan-100)
@@ -16,7 +26,7 @@
     }
 
     main {
-      width: calc(60% - 25px);
+      width: calc(60% - 30px);
       background-color: var(--gray-100);
       h3 {
         color: var(--white);
@@ -89,7 +99,7 @@
         gap: 5px;
         div{
           background-color: var(--terciary-color);
-          height: 315px;
+          height: 250px;
           border-radius: 6px;
         }
       }
@@ -98,7 +108,7 @@
 
     aside {
       background-color: var(--gray-100);
-      width: calc(40% - 25px);
+      width: calc(40% - 30px);
       display: flex;
       flex-direction: column;
       gap: 20px;

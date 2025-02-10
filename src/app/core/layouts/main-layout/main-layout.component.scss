@@ -1,8 +1,8 @@
 .layout-container{
   display: flex;
+  background: var(--primary-color);
 
   main{
-    height: 100vh;
     background-color: var(--terciary-color);
     padding: 130px 50px 30px 50px;
     width: 100%;
